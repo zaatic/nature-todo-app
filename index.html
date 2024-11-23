@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gardener - A nature-inspired task management application">
+    <meta name="keywords" content="task manager, todo list, productivity, organization">
+    <meta name="author" content="Your Name">
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="Gardener Task Manager">
+    <meta property="og:description" content="A nature-inspired task management application">
+    <meta property="og:image" content="https://yourdomain.com/assets/images/og-image.jpg">
+    <meta property="og:url" content="https://yourdomain.com">
+    
+    <title>Gardener - Task Manager</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/images/icon-192.png">
+    
+    <!-- PWA Support -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#7C9082">
+    
+    <!-- Preload Critical Assets -->
+    <link rel="preload" href="/css/styles.css" as="style">
+    <link rel="preload" href="/js/script.js" as="script">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr" defer></script>
+    <script src="/assets/js/chart.min.js" defer></script>
+</head>
+<body>
+    <div class="menu-overlay"></div>
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <h2>Menu</h2>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+
+        <ul class="sidebar-menu">
+            <li><a href="#" class="active" data-view="all"><i class="fas fa-tasks"></i> All Tasks</a></li>
+            <li><a href="#" data-view="calendar"><i class="fas fa-calendar"></i> Calendar</a></li>
+            <li><a href="#" data-view="completed"><i class="fas fa-check"></i> Completed</a></li>
+            <li><a href="#" data-view="archived"><i class="fas fa-archive"></i> Archive</a></li>
+            <li><a href="#" data-view="analytics"><i class="fas fa-chart-bar"></i> Analytics</a></li>
+        </ul>
+    </nav>
+    
+    <main class="container">
+        <div class="header">
+            <button id="menu-toggle" class="menu-toggle" aria-label="Toggle Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <h1>Gardener</h1>
+        </div>
+
+        <!-- Main View -->
+        <div id="main-view">
+            <div class="todo-input">
+                <input type="text" id="task-input" placeholder="Add a new task...">
+                <button id="add-task" aria-label="Add Task">
+                    <i class="fas fa-plus"></i>
+                </button>
+            </div>
+            <ul id="task-list"></ul>
+        </div>
+
+        <!-- Calendar View -->
+        <div id="calendar-view" class="view-section hidden">
+            <div class="calendar-wrapper">
+                <div class="calendar-header">
+                    <h2>Calendar View</h2>
+                    <div class="calendar-stats">
+                        <span class="task-counter">0 tasks today</span>
+                    </div>
+                </div>
+                <div id="calendar"></div>
+                <div class="daily-tasks-section">
+                    <h3>Tasks for <span class="selected-date">today</span></h3>
+                    <div id="daily-tasks"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Archive View -->
+        <div id="archived-view" class="view-section hidden">
+            <div class="archive-wrapper">
+                <div class="archive-header">
+                    <h2>Archive</h2>
+                    <div class="archive-filters">
+                        <select id="archive-period">
+                            <option value="week">Past Week</option>
+                            <option value="month">Past Month</option>
+                            <option value="all">All Time</option>
+                        </select>
+                        <select id="archive-sort">
+                            <option value="date-desc">Newest First</option>
+                            <option value="date-asc">Oldest First</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="archived-tasks"></div>
+            </div>
+        </div>
+
+        <!-- Analytics View -->
+        <div id="analytics-view" class="view-section hidden">
+            <div class="analytics-wrapper">
+                <div class="analytics-header">
+                    <h2>Task Analytics</h2>
+                </div>
+                <div class="analytics-grid">
+                    <div class="stat-card">
+                        <h3>Total Tasks</h3>
+                        <span id="total-tasks">0</span>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Completed</h3>
+                        <span id="completed-tasks">0</span>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Archived</h3>
+                        <span id="archived-tasks">0</span>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Completion Rate</h3>
+                        <span id="completion-rate">0%</span>
+                    </div>
+                </div>
+                <div class="productivity-chart">
+                    <h3>Weekly Progress</h3>
+                    <canvas id="productivity-chart"></canvas>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html> 
