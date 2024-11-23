@@ -470,8 +470,8 @@ body {
     background: var(--bg-secondary);
     border-radius: 20px;
     box-shadow: 0 8px 32px var(--shadow-color);
-    backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
     border: 1px solid var(--border-color);
 }
 
